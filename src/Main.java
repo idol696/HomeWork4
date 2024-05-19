@@ -6,31 +6,34 @@ public class Main {
 
         byte age = 18;
 
+        System.out.printf("Если возраст человека равен %s то он ",age);
         if (age >= 18) {
-            System.out.println("Человеку 18 или больше лет");
+            System.out.println("совершеннолентний");
         } else {
-            System.out.println("Возраст совершеннолетия еще не наступил, нужно немного подождать");
+            System.out.println("не достиг совершеннолетия, нужно немного подождать");
         }
 
         System.out.println("Задача 2");
-        // в задаче ошибка
-        // условия temperature = 5 в задаче не обрабатывается,
-        // но придерживаемся концепции else и не делаем исключения, комментируя момент ТЗ
 
-        byte temperature = 4;
-        boolean isTemperatureCold = false; // по умолчанию флаг выключен
+        byte temperature = 6;
+        boolean isTemperatureCold = false;
 
         if (temperature < 5) {
             isTemperatureCold = true;
         }
 
-        System.out.printf("На улице %s градусов, ", temperature);
-        if (isTemperatureCold) {
-            System.out.println("нужно надеть шапку");
+        if ( isTemperatureCold ) {
             System.out.println("На улице холодно, нужно надеть шапку");
-        } else {
-            System.out.println("можно идти без шапки");
+            System.out.printf("На улице %s градусов, нужно надеть шапку\r\n", temperature);
+        }
+
+        if ( !isTemperatureCold && temperature != 5) {
             System.out.println("Сегодня тепло, можно идти без шапки");
+            System.out.printf("На улице %s градусов, можно идти без шапки\r\n", temperature);
+        }
+
+        if (  temperature == 5 ) {
+            System.out.println("Условиями задачи не предусмотрено решение для 5 градусов");
         }
 
         System.out.println("Задача 3");
@@ -40,80 +43,103 @@ public class Main {
 
         if (speed > 60) {
             isSpeedWarning = true;
-            System.out.println("Скорость превышена, если она больше 60 км/ч");
-        } else {
-            System.out.println("Превышения скорости нет, если она меньше 60 км/ч");
         }
-        System.out.printf("Если скорость %s км/ч, то ", speed);
+
         if (isSpeedWarning) {
-            System.out.println("придется заплатить штраф");
+            System.out.printf("Если скорость %s км/ч, то придется заплатить штраф\r\n", speed);
         } else {
-            System.out.println("можно ездить спокойно");
+            System.out.printf("Если скорость %s км/ч, то можно ездить спокойно\r\n", speed);
         }
 
         System.out.println("Задача 4");
-        // в задаче неточность со словом "до" но из условия видно,
-        // что диапазон возрастов должен покрываться полностью, поэтому комментируем это
 
 
-        int peopleAge = 22;
+        int peopleAge = 24;
+        boolean isAgeDetected = false;
 
-        System.out.printf("Если возраст человека равен %s, то ему нужно ходить ", peopleAge);
         if (peopleAge >= 2 && peopleAge <= 6) {
-            System.out.println("в детский сад");
+            isAgeDetected = true;
+            System.out.printf("Если возраст человека равен %s, то ему нужно ходить в детский сад\r\n", peopleAge);
         }
 
-        if (peopleAge >= 7 && peopleAge <= 17) {
-            System.out.println("в школу");
+        if (!isAgeDetected && peopleAge >= 7 && peopleAge <= 17) {
+            isAgeDetected = true;
+            System.out.printf("Если возраст человека равен %s, то ему нужно ходить в школу\r\n", peopleAge);
         }
 
-        if (peopleAge >= 18 && peopleAge <= 24) {
-            System.out.println("в университет");
+        if (!isAgeDetected && peopleAge >= 18 && peopleAge <= 24) {
+            isAgeDetected = true;
+            System.out.printf("Если возраст человека равен %s, то ему нужно ходить в университет\r\n", peopleAge);
         }
 
-        if (peopleAge > 24) {
-            System.out.println("на работу");
+        if (!isAgeDetected && peopleAge > 24) {
+            isAgeDetected = true;
+            System.out.printf("Если возраст человека равен %s, то ему нужно ходить на работу\r\n", peopleAge);
         }
 
         System.out.println("Задача 5");
+        // по условию задачи мы имеем право применить оптимизацию вывода!
+        int babyAge = 6;
+        boolean isBabyAgeDetected = false;
 
-        // по тексту видим неточность с возрастом 5, однако оставляем все как есть
-        // по логике аналитики, слишком явно задан критерий, уведомляем заказчика о неточности ТЗ!
+        if (babyAge == 5) {
+            isBabyAgeDetected = true;
+            System.out.println("Условие задачи некорректно для возраста 5 лет");
+        }
 
-        int babyAge = 48;
 
-        System.out.printf("Если возраст ребенка равен %s, то ему ", babyAge);
-        if (babyAge < 5) {
+        if ( !isBabyAgeDetected ) {
+            System.out.printf("Если возраст ребенка равен %s, то ему ", babyAge);
+        }
+
+        if (!isBabyAgeDetected && babyAge < 5) {
+            isBabyAgeDetected = true;
             System.out.println("нельзя кататься на аттракционе");
         }
 
-        if (babyAge > 5 && babyAge < 14 ) {
+        if (!isBabyAgeDetected && babyAge > 5 && babyAge < 14) {
+            isBabyAgeDetected = true;
             System.out.println("можно кататья на аттракционе только в сопровождении взрослого");
         }
 
-        if (babyAge >= 14) { // старше 14 лет рассматриваем >= согласно тому что 14 + 1 милисекунда старше 14 лет
+        if (!isBabyAgeDetected && babyAge >= 14) {
+            isBabyAgeDetected = true;
             System.out.println("можно кататья на аттракционе без сопровождении взрослого");
         }
 
         System.out.println("Задача 6");
-        // решаем из расчета того, что все любят и обязаны присаживаться как в маршрутке г.Псков
+
+        // обращаю внимание что мы применяем вложенный цикл проверки мест
+        // первый для определения наличия свободных мест, именно при условии наличия мест вообще
+        // мы будем делать вложенные if - это упрощает нам необходимость дописывания лишних проверок
+        // также моя концепция предусматривает распределение по сидячим местам, а потом по стоячим
+        // с информированием пасажира о необходимости сидеть и при отсутсвии сид.мест - стоять
+        // если Java или в самой концепции стиля нельзя использовать вложенные логические конструкции,
+        // то я перепишу. Для понимания ввел две переменные во вложенном условии
 
         int wagonCapacity = 102;
         int wagonSitCapacity = 60;
-        int passengers = 59;
+        int wagonStayCapacity = wagonCapacity - wagonSitCapacity;
+        int passengers = 60;
 
-        if (wagonCapacity - passengers >0 ) {
+        if (wagonCapacity - passengers > 0) {
+
 
 
             if (wagonSitCapacity - passengers > 0) {
+
+                int wagonFreeSitCapacity = wagonSitCapacity - passengers;
+
                 System.out.printf("Есть %s сидячих мест и %s стоячих мест, покупайте сидячее пока есть!\r\n",
-                        wagonSitCapacity - passengers, wagonCapacity - wagonSitCapacity);
+                        wagonFreeSitCapacity, wagonStayCapacity);
             }
 
-            if ( passengers >= wagonSitCapacity  ) {
+            if (passengers >= wagonSitCapacity) {
+                int wagonFreeStayCapacity = wagonCapacity - passengers;
                 System.out.printf("Есть %s стоячих мест, придется немного страдать!\r\n",
-                        wagonCapacity - passengers );
+                        wagonFreeStayCapacity );
             }
+
         } else {
             System.out.println("В вагоне уже нет мест!");
         }
@@ -125,8 +151,14 @@ public class Main {
         int three = 4;
 
         int max = one;
-        if ( two > one ) max = two; // удобочитаемые выражения вроде можно без {}
-        if ( three > max ) max = three;
+
+        if (two > one) {
+            max = two;
+        }
+
+        if (three > max) {
+            max = three;
+        }
 
         System.out.println("Максимальное число " + max);
 
