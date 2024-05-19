@@ -6,11 +6,10 @@ public class Main {
 
         byte age = 18;
 
-        System.out.printf("Если возраст человека равен %s то он ",age);
         if (age >= 18) {
-            System.out.println("совершеннолентний");
+            System.out.printf("Если возраст человека равен %s то он совершеннолентний\r\n",age);
         } else {
-            System.out.println("не достиг совершеннолетия, нужно немного подождать");
+            System.out.println("Если возраст человека равен %s то он не достиг совершеннолетия, нужно немного подождать\r\n");
         }
 
         System.out.println("Задача 2");
@@ -52,7 +51,6 @@ public class Main {
         }
 
         System.out.println("Задача 4");
-
 
         int peopleAge = 24;
         boolean isAgeDetected = false;
